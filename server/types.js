@@ -5,8 +5,15 @@ module.exports = gql`
     name: String!
   }
 
+  type Message {
+    id: String!
+    grape: String!
+    content: String!
+  }
+
   type Query {
     grapes: [Grape]
+    messages: [Message!]
   }
 
   input CreateGrapeInput{
@@ -20,5 +27,6 @@ module.exports = gql`
   type Mutation{
     createGrape(input: CreateGrapeInput!): Grape!
     deleteGrape(id: ID): DeletePayload!
+    postMessage(grape: String!, content: String!): Message!
   }
 `;
